@@ -1,19 +1,22 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-   }
+}
+
+#timer { 
+    font-size: 24px;
+    background-color: white;
+    float: right;
+    width: 100px;
+    margin-right: 40px; 
+    padding-left: 20px;   
+}
 
 body {
     background-color: rgb(18, 18, 18);
     width: 100vw;
     height: 100vh;   
     display: flex; 
-}
-
-.time {
-text-align: right; 
-font-size: 16px;
-color: white;
 }
 
 .homecontainer {
@@ -46,7 +49,7 @@ p {
  }
 
  #question {
-    font-size: 48px;
+    font-size: 36px;
     margin: 0 0 20px 0;
  }
 
@@ -87,3 +90,24 @@ button:hover {
 .hide {
     display: none;
 }
+
+#status-correct {
+    font-size: 36px;
+    color: green;
+    font-style: italic;
+}
+
+#status-wrong {
+    font-size: 36px;
+    color: red;
+    font-style: italic;
+}
+
+.high-scores-container {
+    background-color: aliceblue;
+    width: 70rem;
+    text-align: center;
+    font-size: 24px;
+    margin-left: 15rem;
+}
+

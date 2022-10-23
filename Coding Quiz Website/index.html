@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="/style.css">
-    <title>Coding Quiz | Home</title>
-  </head>
-  <body>
-    <nav class="time">Time</nav>
-    <div class= "homecontainer">
+    <title>Coding Quiz | Home</title> 
+  </head>    
+  <body>    
+    <div class="homecontainer">
+     <div id="timer">60</div>
       <h1 id="title"<h1>Coding Quiz</h1>
       <p>
       Do your best to answer the following questions to test your coding
@@ -21,14 +21,24 @@
           <button class="btn">Answer 1</button> 
           <button class="btn">Answer 2</button>
           <button class="btn">Answer 3</button>
-          <button class="btn">Answer 4</button>
+          <button class="btn">Answer 4</button>        
         </div>
         <div class="selections">
           <button id="start-btn" class="start-btn">Start Quiz</button>  
           <button id="next-btn"  class="next-btn hide">Next</button>
-          <a href="./highscores.html"><button id="scores-btn" class="scores-btn">High Scores</a>
+          <a href="./highscores.html"><button id="scores-btn" class="scores-btn">High Scores</button></a>          
         </div>
+        <div id="status-correct" class="status-correct hide">Correct</div>
+        <div id="status-wrong" class="status-wrong hide">Wrong</div>
+      <div id="finished-container" class="finished-container hide">
+        <h2>All Done!</h2>
+        <p id="final-score"></p>
+        <label>Enter Your Initials: <input type="text" id="initials"/></label>
+        <br>
+        <a href="./highscores.html"><button id="submit">Submit</button></a>
+      </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>
