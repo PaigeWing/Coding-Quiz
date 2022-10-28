@@ -46,7 +46,7 @@ function startQuiz() {
 
 //Showing First Question
 function showQuestion(question) {
-    questionText.innerText = question.question
+    questionText.textContent = question.question
     question.answers.forEach(answer => {
         var button = document.createElement('button')
         button.innerText = answer.text
@@ -74,31 +74,31 @@ function reset() {
 
 //Choosing Answer
 function selectAnswer(e) {     
-    const selected = e.target  
-    const correct = selected.dataset.correct 
-         
+    const selected = e.target 
+    console.log(selected.textContent); 
+    var answers = questions[currentQuestion].answers
+    var correctAnswer = answers.filter((e)=> {
+        return e.correct === true
+    }) 
+    if (correctAnswer[0].text === selected.textContent) {
+  console.log("correct");
+        correctStatus.classList.remove('hide')
+        secondsLeft = secondsLeft + 5;
+    } else {
+        wrongStatus.classList.remove('hide')
+        secondsLeft = secondsLeft - 5;
+    }
+    
     if (questions.length > currentQuestion + 1)  { 
         nextButton.classList.remove('hide')
-    } else {
+    } else {        
         startBtn.innerText = 'Restart'
         startBtn.classList.remove('hide')
         highScoresBtn.classList.remove('hide')
         finished.classList.remove('hide')
         questionText.classList.add('hide')
-        answerButtons.classList.add('hide')
-
+        answerButtons.classList.add('hide')        
     }      
-}
-
-//Verify Question if Correct or Wrong
-function checkAnswer(element, correct) {
-     if (correct) {
-    correctStatus.classList.remove('hide')
-    seconds = + 5;
-} else {
-    wrongStatus.classList.remove('hide')
-    seconds = - 5;
-}
 }
 
 //List of Questions
@@ -141,13 +141,25 @@ const questions = [
     }
 ]
 
-//Sending High Scores to Second HTML and Local Storage
+// Sending High Scores to Second HTML and Local Storage
 //  var userInitials = document.getElementById('ordered-initials')
 //  var submitButton = document.getElementById('submit')
 
-//  var score = 0
-//  var scoreInitials = []
+ var scoreInitials = []
 
+ function grabScores() {
+    scoreInitials = []
+    var scores = localStorage.getItem("scores")
+    var parsedScores = JSON.parse(scores);
+    scoreInitials.push(parsedScores);
+ }
+
+ function insertScore(initials, score) {
+    scoreInitials.push({[initials]:score});
+    var stringScores = JSON.stringify(scoreInitials);
+    localStorage.setItem("scores", stringScores)
+    grabScores();
+ }
 //  scoreInitials.sort(function (a, b) {
 //     return b.score - a.score;
 //  })
@@ -161,7 +173,6 @@ const questions = [
 //  for (let i = 0; i <parsedScore.length; i++) {
 //     const scoresFinal = parsedScores[i];
 //  }
-
 
 
 
